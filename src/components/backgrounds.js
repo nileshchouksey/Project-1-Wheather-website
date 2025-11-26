@@ -1,0 +1,17 @@
+export const weatherBackgrounds = {
+  Clear: "bg-gradient-to-br from-blue-400 via-sky-300 to-yellow-200",
+  Clouds: "bg-gradient-to-br from-gray-300 via-gray-400 to-gray-600",
+  Rain: "bg-gradient-to-br from-blue-700 via-indigo-800 to-gray-900",
+  Drizzle: "bg-gradient-to-br from-blue-500 via-blue-600 to-gray-700",
+  Thunderstorm: "bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900",
+  Snow: "bg-gradient-to-br from-blue-100 via-white to-blue-200",
+  Mist: "bg-gradient-to-br from-slate-300 via-slate-400 to-slate-500",
+  Smoke: "bg-gradient-to-br from-zinc-600 via-zinc-700 to-zinc-800",
+  Haze: "bg-gradient-to-br from-slate-300 via-slate-400 to-slate-500",
+  Dust: "bg-gradient-to-br from-amber-300 via-amber-400 to-amber-600",
+  Fog: "bg-gradient-to-br from-slate-400 via-slate-500 to-slate-700",
+  Sand: "bg-gradient-to-br from-yellow-300 via-amber-400 to-amber-600",
+  Ash: "bg-gradient-to-br from-zinc-500 via-zinc-700 to-zinc-900",
+  Squall: "bg-gradient-to-br from-indigo-700 via-blue-800 to-gray-900",
+  Tornado: "bg-gradient-to-br from-gray-800 via-gray-900 to-black",
+};
