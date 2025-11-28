@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: Weather Dashboard (OpenWeatherMap Integration)
+  version: 1.0.0
+  description: >
+    This OpenAPI specification documents the external OpenWeatherMap endpoints
+    used in the Weather Dashboard project. It covers current weather, hourly
+    forecast, 5-day forecast, weather maps.
+
+servers:
+  - url: https://api.openweathermap.org/data/2.5
+
+paths:
+  /weather:
+    get:
+      summary: Get current weather by city
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+          description: City name (e.g., London)
+        - name: appid
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Your OpenWeatherMap API key
+      responses:
+        '200':
+          description: Current weather data returned successfully
+
+  /forecast:
+    get:
+      summary: Get 5-day forecast by city
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: appid
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Forecast data returned successfully
+
+
+  /onecall:
+    get:
+      summary: Get One Call API data (current, minutely, hourly, daily)
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: appid
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: One Call API data returned successfully
