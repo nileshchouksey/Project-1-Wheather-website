@@ -1,0 +1,22 @@
+# Enforce consistent line endings
+* text=auto
+
+# Explicitly set line endings for common file types
+*.js   text eol=lf
+*.jsx  text eol=lf
+*.ts   text eol=lf
+*.tsx  text eol=lf
+*.css  text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+
+# Treat images and binary files as binary (no line ending changes)
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.svg  binary
+
+# Keep Windows batch files with CRLF endings
+*.bat  text eol=crlf

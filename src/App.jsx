@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { getWeatherData, getForecastData } from "./api";
 import SearchBox from "./components/SearchBox";
-import WeatherCard from "./components/WheatherCard";
+import WeatherCard from "./components/WeatherCard"; // fixed name
 import ForecastList from "./components/ForecastList";
 import HourlyForecast from "./components/HourlyForecast";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MapView from "./components/MapView";
+import { weatherBackgrounds } from "./components/backgrounds";
 
 function App() {
   const [weather, setWeather] = useState(null);
@@ -34,16 +35,21 @@ function App() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Dynamic background class based on weather condition
+  const condition = weather?.weather?.[0]?.main || "Clear";
+  const bgClass =
+    weatherBackgrounds[condition] || weatherBackgrounds["Clear"];
+
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600 text-white relative overflow-hidden">
+    <div className={`min-h-screen flex flex-col text-white relative overflow-hidden transition-colors duration-700 ${bgClass}`}>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
@@ -65,7 +71,7 @@ function App() {
 
           <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 md:p-8 lg:p-10 shadow-2xl border border-white/20">
             <SearchBox onSearch={handleSearch} />
-            
+
             {loading && (
               <div className="flex flex-col items-center justify-center py-12">
                 <div className="w-16 h-16 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4"></div>
@@ -85,13 +91,20 @@ function App() {
             {!loading && (
               <>
                 <WeatherCard weather={weather} />
+
                 <div id="forecast" className="scroll-mt-20">
                   <HourlyForecast forecast={forecast} />
                   <ForecastList forecast={forecast} />
                 </div>
-                {weather && (
+
+                {weather?.coord && (
                   <div id="maps" className="mt-8 scroll-mt-20">
-                    <MapView defaultCountry={weather.sys?.country || "United States"} />
+                    <MapView
+                      lat={weather.coord.lat}
+                      lon={weather.coord.lon}
+                      city={weather.name}
+                      defaultCountry={weather.sys?.country || "India"}
+                    />
                   </div>
                 )}
               </>
@@ -106,4 +119,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
