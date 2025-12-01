@@ -7,4 +7,5 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  force = true
+  # Do not force rewrite existing files (assets). Leave `force` off so
+  # Netlify serves real static files (JS/CSS) with correct MIME types.
