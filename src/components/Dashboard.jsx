@@ -1,7 +1,4 @@
 import { useState, useEffect } from "react";
-import SwaggerUI from "swagger-ui-react";
-import "swagger-ui-react/swagger-ui.css";
-
 import WeatherCard from "./WeatherCard";
 import SearchBox from "./SearchBox";
 import ForecastList from "./ForecastList";
@@ -69,24 +66,14 @@ function Dashboard({ weather, forecast, loading, error, handleSearch }) {
           </p>
         </div>
 
-        {/* API Documentation Section */}
-        <div id="api-docs" className="mt-12 scroll-mt-20">
-            <button
-              onClick={() => setShowDocs(!showDocs)}
-              className="px-4 py-2 bg-white/10 dark:bg-gray-700 rounded-lg 
-                hover:bg-white/20 dark:hover:bg-gray-600 transition-colors duration-300 
-                text-white dark:text-gray-200 font-medium"
-            >
-              {showDocs ? "Hide API Docs" : "Show API Docs"}
-            </button>
-
-            {showDocs && (
-              <div className="mt-6 animate-fade-in">
-                <SwaggerUI url="/openapi.yaml" />
-              </div>
-            )}
-         
-        </div>
+       {showDocs && (
+  <div className="mt-6 animate-fade-in text-gray-200">
+    <h2 className="text-xl font-bold">API Documentation</h2>
+    <p className="mt-4">
+      This is a placeholder for API docs. Visit the <code>/docs</code> route for details.
+    </p>
+  </div>
+)}
       </div>
     </main>
   );
