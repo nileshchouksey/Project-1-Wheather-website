@@ -4,6 +4,7 @@ import { getWeatherData, getForecastData } from "./api";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
+import Docs from "./components/Docs";   // Import your Docs component
 import { weatherBackgrounds } from "./components/backgrounds";
 
 function App() {
@@ -67,8 +68,13 @@ function App() {
                 error={error}
                 handleSearch={handleSearch}
               />
+              
+
             }
           />
+           <Route path="/docs" element={<Docs />} />   {/* ✅ Docs route */}
+
+
         </Routes>
         <Footer onNavigate={scrollToSection} />
       </Router>

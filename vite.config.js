@@ -1,3 +1,4 @@
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -18,6 +19,14 @@ export default defineConfig({
       },
     },
     chunkSizeWarningLimit: 1000,
+    commonjsOptions: {
+      // Helps avoid parse errors with swagger-ui-react
+      include: []
+    }
+  },
+  optimizeDeps: {
+    // Exclude swagger-ui-react from pre-bundling
+    exclude: ['swagger-ui-react']
   },
   preview: {
     port: 4173,

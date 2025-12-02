@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+
 
 export default function Footer({ onNavigate }) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -46,11 +49,15 @@ export default function Footer({ onNavigate }) {
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate("api-docs")} 
-                  className="hover:text-white dark:hover:text-gray-200">
-                  API Documentation
-                </button>
-              </li>
+  <Link 
+    to="/docs" 
+    className="hover:text-white dark:hover:text-gray-200"
+  >
+    API Documentation
+  </Link>
+</li>
+
+
             </ul>
           </div>
        
