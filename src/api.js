@@ -2,6 +2,9 @@ import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
+console.log("Loaded API key:", API_KEY);
+
+
 
 // Validate API key on module load
 if (!API_KEY && import.meta.env.PROD) {
