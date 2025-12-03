@@ -20,8 +20,8 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 1000,
     commonjsOptions: {
-      // Helps avoid parse errors with swagger-ui-react
-      include: []
+      // let Vite's defaults work, or at least include common CJS deps
+      include: [/node_modules/],
     }
   },
   optimizeDeps: {
